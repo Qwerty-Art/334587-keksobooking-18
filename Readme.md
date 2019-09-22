@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Артур Бубнов](https://up.htmlacademy.ru/javascript/18/user/334587).
-* Наставник: `Владимир Мединский`.
+* Наставник: `Владимир Мединский, Профиль: https://htmlacademy.ru/profile/id1113291, skype: medinsky_skype`.
 
 ---
 
