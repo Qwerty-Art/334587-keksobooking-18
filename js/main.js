@@ -58,7 +58,7 @@ function getAvatar(number) {
 
 function getPhoto() {
   return PHOTOS.sort(compareRandom);
-};
+}
 
 function getFeatures() {
   FEATURES.sort(compareRandom);
@@ -91,5 +91,3 @@ for (var i = 0; i < 8; i++) {
     }
   });
 }
-
-console.log(offer);
