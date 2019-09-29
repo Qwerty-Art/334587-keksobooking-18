@@ -1,5 +1,9 @@
 'use strict';
 
+var COUNT = 8;
+var PIN_WIDTH = 50;
+var PIN_HEIGHT = 70;
+
 var TITLE = [
   'Уютное гнездышко для молодоженов',
   'Маленькая квартирка рядом с парком',
@@ -53,7 +57,7 @@ function compareRandom() {
 }
 
 function getAvatar(number) {
-  return 'img/avatars/user' + number + '.png';
+  return 'img/avatars/user0' + (number + 1) + '.png';
 }
 
 function getPhoto() {
@@ -67,7 +71,7 @@ function getFeatures() {
 
 var offer = [];
 
-for (var i = 0; i < 8; i++) {
+for (var i = 0; i < COUNT; i++) {
   var locatonX = getRandomNumber(0, 1200);
   var locatonY = getRandomNumber(130, 630);
   offer.push({
@@ -91,3 +95,25 @@ for (var i = 0; i < 8; i++) {
     }
   });
 }
+
+function createPin() {
+  var fragment = document.createDocumentFragment();
+  var mapPins = document.querySelectorAll('.map__pins')[0];
+  var template = document.querySelector('#pin').content.querySelector('.map__pin');
+
+  for (var i = 0; i < offer.length; i++) {
+    var element = template.cloneNode(true);
+    var locationX = offer[i]['location']['x'] - PIN_WIDTH / 2;
+    var locationY = offer[i]['location']['y'] - PIN_HEIGHT;
+    var title = offer[i]['title'];
+    var srcImgAvatar = offer[i]['author']['avatar']
+
+    element.style.cssText = 'left: ' + locationX + 'px; top: ' + locationY + 'px';
+    element.querySelector('img').setAttribute('src', srcImgAvatar);
+    element.querySelector('img').setAttribute('alt', title);
+    fragment.appendChild(element);
+  }
+  mapPins.appendChild(fragment);
+}
+
+createPin();
