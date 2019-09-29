@@ -101,12 +101,12 @@ function createPin() {
   var mapPins = document.querySelectorAll('.map__pins')[0];
   var template = document.querySelector('#pin').content.querySelector('.map__pin');
 
-  for (var i = 0; i < offer.length; i++) {
+  for (var j = 0; j < offer.length; j++) {
     var element = template.cloneNode(true);
-    var locationX = offer[i]['location']['x'] - PIN_WIDTH / 2;
-    var locationY = offer[i]['location']['y'] - PIN_HEIGHT;
-    var title = offer[i]['title'];
-    var srcImgAvatar = offer[i]['author']['avatar']
+    var locationX = offer[j]['location']['x'] - PIN_WIDTH / 2;
+    var locationY = offer[j]['location']['y'] - PIN_HEIGHT;
+    var title = offer[j]['title'];
+    var srcImgAvatar = offer[j]['author']['avatar'];
 
     element.style.cssText = 'left: ' + locationX + 'px; top: ' + locationY + 'px';
     element.querySelector('img').setAttribute('src', srcImgAvatar);
