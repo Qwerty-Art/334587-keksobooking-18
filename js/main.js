@@ -96,11 +96,11 @@ for (var i = 0; i < COUNT; i++) {
   });
 }
 
-var getMapPins = function() {
+var getMapPins = function () {
   return document.querySelector('.map__pins');
 };
 
-var getPin = function() {
+var getPin = function () {
   return document.querySelector('#pin').content.querySelector('.map__pin');
 };
 
