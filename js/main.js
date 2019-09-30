@@ -96,15 +96,23 @@ for (var i = 0; i < COUNT; i++) {
   });
 }
 
+function getMapPins() {
+	return document.querySelector('.map__pins');
+}
+
+function getPin() {
+	return document.querySelector('#pin').content.querySelector('.map__pin');
+}
+
 function createPin() {
   var fragment = document.createDocumentFragment();
   var mapPins = document.querySelectorAll('.map__pins')[0];
   var template = document.querySelector('#pin').content.querySelector('.map__pin');
 
   for (var j = 0; j < offer.length; j++) {
-    var element = template.cloneNode(true);
-    var locationX = offer[j]['location']['x'] - PIN_WIDTH / 2;
-    var locationY = offer[j]['location']['y'] - PIN_HEIGHT;
+    var element = getPin().cloneNode(true);
+    var locationX = offer[j]['location'].x - PIN_WIDTH / 2;
+    var locationY = offer[j]['location'].y - PIN_HEIGHT;
     var title = offer[j]['title'];
     var srcImgAvatar = offer[j]['author']['avatar'];
 
@@ -113,7 +121,7 @@ function createPin() {
     element.querySelector('img').setAttribute('alt', title);
     fragment.appendChild(element);
   }
-  mapPins.appendChild(fragment);
+  getMapPins().appendChild(fragment);
 }
 
 createPin();
