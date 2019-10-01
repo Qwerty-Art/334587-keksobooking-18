@@ -108,7 +108,7 @@ function createPin() {
   var fragment = document.createDocumentFragment();
 
   for (var j = 0; j < offer.length; j++) {
-    var element = getPin.cloneNode(true);
+    var element = getPin().cloneNode(true);
     var locationX = offer[j]['location'].x - PIN_WIDTH / 2;
     var locationY = offer[j]['location'].y - PIN_HEIGHT;
     var title = offer[j]['title'];
@@ -119,7 +119,7 @@ function createPin() {
     element.querySelector('img').setAttribute('alt', title);
     fragment.appendChild(element);
   }
-  getMapPins.appendChild(fragment);
+  getMapPins().appendChild(fragment);
 }
 
 createPin();
