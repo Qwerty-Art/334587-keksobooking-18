@@ -15,7 +15,7 @@ var TITLE = [
   'Стандартная квартира в центре'
 ];
 
-var TYPE = ['palace', 'flat', 'house', 'bungalo'];
+var TYPE_HOUSE = ['palace', 'flat', 'house', 'bungalo'];
 
 var TIME = ['12:00', '13:00', '14:00'];
 
@@ -65,12 +65,12 @@ function getPhoto() {
 }
 
 function getFeatures() {
-  FEATURES.sort(compareRandom);
   return FEATURES.slice(0, getRandomNumber(1, FEATURES.length));
 }
 
 var offer = [];
 
+function getOffer() {
 for (var i = 0; i < COUNT; i++) {
   var locatonX = getRandomNumber(0, 1200);
   var locatonY = getRandomNumber(130, 630);
@@ -81,7 +81,7 @@ for (var i = 0; i < COUNT; i++) {
     title: TITLE[i],
     address: locatonX + ', ' + locatonY,
     price: getRandomNumber(0, 1000000),
-    type: TYPE[getRandomNumber(0, TYPE.length - 1)],
+    type: TYPE_HOUSE[getRandomNumber(0, TYPE_HOUSE.length - 1)],
     rooms: ROOMS[getRandomNumber(0, ROOMS.length - 1)],
     guests: getRandomNumber(1, 10),
     checkin: TIME[getRandomNumber(0, TIME.length - 1)],
@@ -95,6 +95,9 @@ for (var i = 0; i < COUNT; i++) {
     }
   });
 }
+}
+
+
 
 var getMapPins = function () {
   return document.querySelector('.map__pins');
@@ -108,16 +111,16 @@ function createPin() {
   var fragment = document.createDocumentFragment();
 
   for (var j = 0; j < offer.length; j++) {
-    var element = getPin().cloneNode(true);
+    var pinClone = getPin().cloneNode(true);
     var locationX = offer[j]['location'].x - PIN_WIDTH / 2;
     var locationY = offer[j]['location'].y - PIN_HEIGHT;
     var title = offer[j]['title'];
     var srcImgAvatar = offer[j]['author']['avatar'];
 
-    element.style.cssText = 'left: ' + locationX + 'px; top: ' + locationY + 'px';
-    element.querySelector('img').setAttribute('src', srcImgAvatar);
-    element.querySelector('img').setAttribute('alt', title);
-    fragment.appendChild(element);
+    pinClone.style.cssText = 'left: ' + locationX + 'px; top: ' + locationY + 'px';
+    pinClone.querySelector('img').setAttribute('src', srcImgAvatar);
+    pinClone.querySelector('img').setAttribute('alt', title);
+    fragment.appendChild(pinClone);
   }
   getMapPins().appendChild(fragment);
 }
