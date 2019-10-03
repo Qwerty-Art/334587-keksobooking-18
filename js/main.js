@@ -71,32 +71,33 @@ function getFeatures() {
 var offer = [];
 
 function getOffer() {
-for (var i = 0; i < COUNT; i++) {
-  var locatonX = getRandomNumber(0, 1200);
-  var locatonY = getRandomNumber(130, 630);
-  offer.push({
-    author: {
-      avatar: getAvatar(i)
-    },
-    title: TITLE[i],
-    address: locatonX + ', ' + locatonY,
-    price: getRandomNumber(0, 1000000),
-    type: TYPE_HOUSE[getRandomNumber(0, TYPE_HOUSE.length - 1)],
-    rooms: ROOMS[getRandomNumber(0, ROOMS.length - 1)],
-    guests: getRandomNumber(1, 10),
-    checkin: TIME[getRandomNumber(0, TIME.length - 1)],
-    checkout: TIME[getRandomNumber(0, TIME.length - 1)],
-    features: getFeatures(),
-    description: DESCRIPTION[getRandomNumber(0, DESCRIPTION.length - 1)],
-    photos: getPhoto(),
-    location: {
-      x: locatonX,
-      y: locatonY
-    }
-  });
-}
+  for (var i = 0; i < COUNT; i++) {
+    var locatonX = getRandomNumber(0, 1200);
+    var locatonY = getRandomNumber(130, 630);
+    offer.push({
+      author: {
+        avatar: getAvatar(i)
+      },
+      title: TITLE[i],
+      address: locatonX + ', ' + locatonY,
+      price: getRandomNumber(0, 1000000),
+      type: TYPE_HOUSE[getRandomNumber(0, TYPE_HOUSE.length - 1)],
+      rooms: ROOMS[getRandomNumber(0, ROOMS.length - 1)],
+      guests: getRandomNumber(1, 10),
+      checkin: TIME[getRandomNumber(0, TIME.length - 1)],
+      checkout: TIME[getRandomNumber(0, TIME.length - 1)],
+      features: getFeatures(),
+      description: DESCRIPTION[getRandomNumber(0, DESCRIPTION.length - 1)],
+      photos: getPhoto(),
+      location: {
+        x: locatonX,
+        y: locatonY
+      }
+    });
+  }
 }
 
+getOffer();
 
 
 var getMapPins = function () {
