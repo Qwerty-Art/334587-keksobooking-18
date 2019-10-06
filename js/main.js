@@ -68,13 +68,15 @@ function getFeatures() {
   return FEATURES.slice(0, getRandomNumber(1, FEATURES.length));
 }
 
-var offer = [];
+
 
 function getOffer() {
+	var arrOffer = [];
+
   for (var i = 0; i < COUNT; i++) {
     var locatonX = getRandomNumber(0, 1200);
     var locatonY = getRandomNumber(130, 630);
-    offer.push({
+    arrOffer.push({
       author: {
         avatar: getAvatar(i)
       },
@@ -94,10 +96,11 @@ function getOffer() {
         y: locatonY
       }
     });
-  }
+	}
+	return arrOffer;
 }
 
-getOffer();
+
 
 
 var getMapPins = function () {
@@ -109,6 +112,7 @@ var getPin = function () {
 };
 
 function createPin() {
+	var offer = getOffer();
   var fragment = document.createDocumentFragment();
 
   for (var j = 0; j < offer.length; j++) {
