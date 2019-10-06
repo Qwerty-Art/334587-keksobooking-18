@@ -68,10 +68,8 @@ function getFeatures() {
   return FEATURES.slice(0, getRandomNumber(1, FEATURES.length));
 }
 
-
-
 function getOffer() {
-	var arrOffer = [];
+  var arrOffer = [];
 
   for (var i = 0; i < COUNT; i++) {
     var locatonX = getRandomNumber(0, 1200);
@@ -96,12 +94,9 @@ function getOffer() {
         y: locatonY
       }
     });
-	}
-	return arrOffer;
+  }
+  return arrOffer;
 }
-
-
-
 
 var getMapPins = function () {
   return document.querySelector('.map__pins');
@@ -112,7 +107,7 @@ var getPin = function () {
 };
 
 function createPin() {
-	var offer = getOffer();
+  var offer = getOffer();
   var fragment = document.createDocumentFragment();
 
   for (var j = 0; j < offer.length; j++) {
