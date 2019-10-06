@@ -70,7 +70,6 @@ function getFeatures() {
 
 function getOffer() {
   var arrOffer = [];
-
   for (var i = 0; i < COUNT; i++) {
     var locatonX = getRandomNumber(0, 1200);
     var locatonY = getRandomNumber(130, 630);
