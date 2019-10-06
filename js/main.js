@@ -69,11 +69,11 @@ function getFeatures() {
 }
 
 function getOffer() {
-  var arrOffer = [];
+  var offer = [];
   for (var i = 0; i < COUNT; i++) {
     var locatonX = getRandomNumber(0, 1200);
     var locatonY = getRandomNumber(130, 630);
-    arrOffer.push({
+    offer.push({
       author: {
         avatar: getAvatar(i)
       },
@@ -94,7 +94,7 @@ function getOffer() {
       }
     });
   }
-  return arrOffer;
+  return offer;
 }
 
 var getMapPins = function () {
