@@ -28,7 +28,7 @@ var FEATURES = [
   'conditioner'
 ];
 
-var DESCRIPTION = [
+var DESCRIPTIONS = [
   'Великолепный таун-хауз в центре Токио. Подходит как туристам, так и бизнесменам. Дом полностью укомплектован и имеет свежий ремонт.',
   'Маленькая чистая квратира на краю парка. Без интернета, регистрации и СМС.',
   'Великолепная лавочка прямо в центре парка. Подходит для всех кто любит спать на свежем воздухе.',
@@ -60,7 +60,7 @@ function getAvatar(number) {
   return 'img/avatars/user0' + (number + 1) + '.png';
 }
 
-function getPhoto() {
+function getPhotos() {
   return PHOTOS.sort(compareRandom);
 }
 
@@ -68,12 +68,12 @@ function getFeatures() {
   return FEATURES.slice(0, getRandomNumber(1, FEATURES.length));
 }
 
-function getOffer() {
-  var offer = [];
+function getOffers() {
+  var offers = [];
   for (var i = 0; i < COUNT; i++) {
     var locatonX = getRandomNumber(0, 1200);
     var locatonY = getRandomNumber(130, 630);
-    offer.push({
+    offers.push({
       author: {
         avatar: getAvatar(i)
       },
@@ -86,15 +86,15 @@ function getOffer() {
       checkin: TIME[getRandomNumber(0, TIME.length - 1)],
       checkout: TIME[getRandomNumber(0, TIME.length - 1)],
       features: getFeatures(),
-      description: DESCRIPTION[getRandomNumber(0, DESCRIPTION.length - 1)],
-      photos: getPhoto(),
+      description: DESCRIPTIONS[getRandomNumber(0, DESCRIPTIONS.length - 1)],
+      photos: getPhotos(),
       location: {
         x: locatonX,
         y: locatonY
       }
     });
   }
-  return offer;
+  return offers;
 }
 
 var getMapPins = function () {
@@ -105,16 +105,16 @@ var getPin = function () {
   return document.querySelector('#pin').content.querySelector('.map__pin');
 };
 
-function createPin() {
-  var offer = getOffer();
+function createPins() {
+  var offers = getOffers();
   var fragment = document.createDocumentFragment();
 
-  for (var j = 0; j < offer.length; j++) {
+  for (var j = 0; j < offers.length; j++) {
     var pinClone = getPin().cloneNode(true);
-    var locationX = offer[j]['location'].x - PIN_WIDTH / 2;
-    var locationY = offer[j]['location'].y - PIN_HEIGHT;
-    var title = offer[j]['title'];
-    var srcImgAvatar = offer[j]['author']['avatar'];
+    var locationX = offers[j]['location'].x - PIN_WIDTH / 2;
+    var locationY = offers[j]['location'].y - PIN_HEIGHT;
+    var title = offers[j]['title'];
+    var srcImgAvatar = offers[j]['author']['avatar'];
 
     pinClone.style.cssText = 'left: ' + locationX + 'px; top: ' + locationY + 'px';
     pinClone.querySelector('img').setAttribute('src', srcImgAvatar);
@@ -124,4 +124,4 @@ function createPin() {
   getMapPins().appendChild(fragment);
 }
 
-createPin();
+createPins();
